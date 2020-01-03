@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <!-- TODO: Whatever is the title, photo is served from there -->
+    <title>People</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+    <link rel="stylesheet" href="Gallery/slimbox2.css" type="text/css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/metro.css" /> 
+    <link rel="stylesheet" type="text/css" href="css/image.css" /> 
+
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="Gallery/jquery.js"></script>
+    <script type="text/javascript" src="scripts/image.js"></script>
+    <script type="text/javascript">
+    window.onload = function() {
+        // TODO: Change the image count to be the same as in the image folder
+        count = 20
+        addImages(document.getElementById("bodyDiv"), count);
+        setRandomPhoto(38)
+        document.getElementById("titleId").innerHTML = document.title; 
+    };
+    </script>
+
+</head>
+<body>
+<div id="mainDiv">
+    <div id="headDiv">
+        <a href="./index.html"><img id="backImg" src="back.png" alt="back" /></a>
+        <h1 class="title">People</h1>
+    </div>
+
+    <div id="topimageDiv">
+        <div id="prevDiv"><img onclick="setPrevPhoto()" id="prevImg" src="prevlabel.gif" /></div>
+        <div id="nextDiv"><img  onclick="setNextPhoto()" id="nextImg" src="nextlabel.gif" /></div>
+        
+        <img id="topImage" />
+    </div>
+    <div id="bodyDiv">
+    </div>
+
+    <div id="footerDiv">
+        <iframe src="Copyright.htm" id="footerFrame" / > 
+    </div>
+</div>
+    
+    <!-- Google Analytic -->
+    <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        _uacct = "UA-3031319-2";
+        urchinTracker();
+    </script>
+</body>
+</html>
