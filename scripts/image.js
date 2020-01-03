@@ -1,12 +1,16 @@
-var maxImageIndex
-function imageClick() {
-    newSrc= this.src.replace("_thumb", "");
-    setMainImageByPath(newSrc)
+var maxImageCount;      // maximum number of images on this page
+var allPhotos = [];     // array of all the photos
+var currentIndex = 0;   // index into allPhotos that is being displayed
+
+// Photo class with path of thumbnail and full resolution
+class Photo {
+    constructor(thumb, full) {
+        this.thumbPath = thumb;
+        this.fullPath = full;
+    }
 }
 
-// TODO: Actually fix this image sequencing!!!
-
-// shuffle an array randomly
+// helped to shuffle an array randomly
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
     // While there remain elements to shuffle...
@@ -23,40 +27,34 @@ function shuffle(array) {
     return array;
 }
 
-function setMainImage(index) {
-    var imgFolder = './Gallery/';
-    targetImg = document.getElementById("topImage");
-    targetImg.src = imgFolder + index.toString() + '.jpg';
+// Image navigation on the page
+function imageClick() {
+    index = Number(this.id.replace("img_",""));
+    currentIndex = index
+    setCurrentImage()
 }
 
-function setMainImageByPath(path) {
+function setCurrentImage() {
     targetImg = document.getElementById("topImage"), 
-    targetImg.src = path;
-}
-
-function setRandomPhoto(count) {
-    randomIndex = Math.floor(Math.random() * count);
-    setMainImage(randomIndex)
+    targetImg.src = allPhotos[currentIndex].fullPath;
 }
 
 function setPrevPhoto() {
-    randomIndex-- 
-    if (randomIndex < 0) {
-        randomIndex = maxImageIndex
+    currentIndex-- 
+    if (currentIndex < 0) {
+        currentIndex = maxImageCount - 1
     }
     
-    setMainImage(randomIndex)
+    setCurrentImage()
 }
 
 function setNextPhoto() {
-    randomIndex++
-    if (randomIndex > maxImageIndex) {
-        randomIndex = 0
-    }
-    
-    setMainImage(randomIndex)
+    currentIndex = (currentIndex+1) % maxImageCount
+
+    setCurrentImage()
 }
 
+// Add all images into the page
 function addImages(targetDiv, count){
     var imgFolder = './Gallery/';
     // fill an array with 0..count-1
@@ -64,6 +62,7 @@ function addImages(targetDiv, count){
     for (var i = 0; i < count; i++) {
         indices.push(i);
     }
+    
 
     // shuffle the array so that the numbers 0..count-1 is random in the array
     indices = shuffle(indices);
@@ -71,18 +70,25 @@ function addImages(targetDiv, count){
     // loop through the random array and crate image objects
     var images = [];
     for(var j = 0; j < indices.length; j++){
+
+        // Create paths and store them
+        photoThumbPath = imgFolder + indices[j].toString() + '_thumb.jpg';
+        photoFullPath = imgFolder + indices[j].toString() + '.jpg';
+        photo = new Photo(photoThumbPath, photoFullPath)
+        allPhotos.push(photo)
+
+        // Create and show the thumbnail
         var img = document.createElement("img");
-        img.src = imgFolder + indices[j].toString() + '_thumb.jpg';
-        img.id = "imgThumbId";
-        img.class = "imgthumb";
-        
+        img.src = photoThumbPath;
+        // NOTE! the id is parsed later for finding image index for navigation. Don't change without changing that
+        img.id = "img_" + j;
+        img.className = "imgThumb";
+                
         img.onclick = imageClick;
        
         targetDiv.appendChild(img);
-        var image = [];
-        image.push(imgFolder + indices[j].toString() + '.jpg');
-        images.push(image);
     }
 
-    maxImageIndex = count - 1
+    maxImageCount = count
+    setCurrentImage()
 }
