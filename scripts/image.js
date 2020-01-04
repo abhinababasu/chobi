@@ -54,6 +54,21 @@ function setNextPhoto() {
     setCurrentImage()
 }
 
+function imageLoaded() {
+    l = this.getBoundingClientRect().left;
+    l = (Math.round(l) - 8) + "px";
+    document.getElementById("prevDiv").style.left = l;
+
+    r = this.getBoundingClientRect().right;
+    
+    nextDiv = document.getElementById("nextDiv");
+    
+    l = r - nextDiv.getBoundingClientRect().width;
+    l = Math.round(l) - 8;
+    l = l + "px";
+    nextDiv.style.left = l;
+}
+
 function keyHandler(e) {
     // left arrow or "p"
     if (e.keyCode == 37 || e.keyCode == 80) {
@@ -103,4 +118,5 @@ function addImages(targetDiv, count){
     maxImageCount = count;
     setCurrentImage();
     document.body.onkeydown = keyHandler;
+    document.getElementById("topImage").onload = imageLoaded;
 }
