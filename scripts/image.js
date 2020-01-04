@@ -56,7 +56,7 @@ function setNextPhoto() {
 
 function imageLoaded() {
     l = this.getBoundingClientRect().left;
-    l = (Math.round(l) - 8) + "px";
+    l = (Math.round(l)) + "px";
     document.getElementById("prevDiv").style.left = l;
 
     r = this.getBoundingClientRect().right;
@@ -64,7 +64,7 @@ function imageLoaded() {
     nextDiv = document.getElementById("nextDiv");
     
     l = r - nextDiv.getBoundingClientRect().width;
-    l = Math.round(l) - 8;
+    l = Math.round(l) - 2;
     l = l + "px";
     nextDiv.style.left = l;
 }
