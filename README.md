@@ -11,3 +11,10 @@ A static photo gallery generator
 ### Generation
 1. Go code to copy everything over
 1. Go code to generate images and thumbnails in target folder
+1. Tumbnails for portrait should be not from the center (cmd line option)
+
+#### Generating
+
+```
+chobi "D:\SkyDrive\Shared Photos\Portfolio\Portfolio1" d:\SkyDrive\Code\BongGeek\Photography\Gallery 150
+```
