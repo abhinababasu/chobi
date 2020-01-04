@@ -96,7 +96,7 @@ img
  * Misc layouts
  */
 
-h1.title
+#pageHeader
 {
     font-family:Arial Black, Arial;
     font-size:30pt;

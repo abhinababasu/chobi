@@ -82,6 +82,8 @@ function keyHandler(e) {
 
 // Add all images into the page
 function addImages(name, targetDiv, count){
+    document.getElementById("pageHeader").innerHTML = name;
+
     var imgFolder =  './' + name + '/';
     // fill an array with 0..count-1
     var indices = [];

@@ -1,8 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-    <!-- TODO: Whatever is the title, photo is served from there -->
-    <title>People</title>
+    <!-- GALLERY_NAME will be replaced by generator -->
+    <title>GALLERY_NAME</title>
+
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <link rel="stylesheet" type="text/css" href="css/image.css" /> 
 
@@ -11,9 +12,9 @@
     <script type="text/javascript" src="scripts/image.js"></script>
     <script type="text/javascript">
     window.onload = function() {
-        // TODO: Change the image count to be the same as in the image folder
-        count = 20
-        addImages('Gallery', document.getElementById("bodyDiv"), count);
+        // IMG_COUNT and GALLERY_NAME will be replaced
+        IMG_COUNT = 20
+        addImages('GALLERY_NAME', document.getElementById("bodyDiv"), IMG_COUNT);
     };
     </script>
 </head>
@@ -22,7 +23,7 @@
 <div id="mainDiv">
     <div id="headDiv">
         <a href="./index.html"><img id="backImg" src="back.png" alt="back" /></a>
-        <h1 class="title">People</h1>
+        <h1 id="pageHeader">will be replaced</h1>
     </div>
 
     <div id="topimageDiv">
