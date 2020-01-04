@@ -60,15 +60,6 @@ func ResizeImage(srcPath, dstPath string, size uint) {
 	log.Printf("Generated %v", dstPath)
 }
 
-func CreateDirIfNotExist(dir string) {
-	if _, err := os.Stat(dir); os.IsNotExist(err) {
-		err = os.MkdirAll(dir, 0755)
-		if err != nil {
-			panic(err)
-		}
-	}
-}
-
 func GenerateImagesIntoDir(name, srcFolder, dstFolder string, thumbSize uint) {
 
 	log.Printf("Enumerating folder %v\n", srcFolder)
