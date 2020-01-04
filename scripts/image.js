@@ -54,6 +54,17 @@ function setNextPhoto() {
     setCurrentImage()
 }
 
+function keyHandler(e) {
+    // left arrow or "p"
+    if (e.keyCode == 37 || e.keyCode == 80) {
+        setPrevPhoto();
+    } 
+    // right arrow or "n"
+    else if (e.keyCode == 39 || e.keyCode == 78) {
+        setNextPhoto();
+    }
+}
+
 // Add all images into the page
 function addImages(targetDiv, count){
     var imgFolder = './Gallery/';
@@ -89,6 +100,7 @@ function addImages(targetDiv, count){
         targetDiv.appendChild(img);
     }
 
-    maxImageCount = count
-    setCurrentImage()
+    maxImageCount = count;
+    setCurrentImage();
+    document.body.onkeydown = keyHandler;
 }
