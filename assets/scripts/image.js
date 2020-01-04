@@ -2,6 +2,19 @@ var maxImageCount;      // maximum number of images on this page
 var allPhotos = [];     // array of all the photos
 var currentIndex = 0;   // index into allPhotos that is being displayed
 
+// html elements manipulated by this script
+const imageIdPrefix = 'img_';
+const topImageId = 'topImage';
+const prevButtonDiv = 'prevDiv';
+const nextButtonDiv = 'nextDiv';
+const prevDiv = 'previous';
+const nextDiv = 'next';
+const imgThumbClass = 'imgThumb';
+const imageThumbFileNameSuffix = '_thumb.jpg';
+const imageFileExtension = '.jpg';
+const pageHeaderId = 'pageHeader';
+const imageThumbClass = 'imgThumb';
+
 // Photo class with path of thumbnail and full resolution
 class Photo {
     constructor(thumb, full) {
@@ -29,13 +42,13 @@ function shuffle(array) {
 
 // Image navigation on the page
 function imageClick() {
-    index = Number(this.id.replace("img_",""));
+    index = Number(this.id.replace(imageIdPrefix,""));
     currentIndex = index
     setCurrentImage()
 }
 
 function setCurrentImage() {
-    targetImg = document.getElementById("topImage"), 
+    targetImg = document.getElementById(topImageId), 
     targetImg.src = allPhotos[currentIndex].fullPath;
 }
 
@@ -57,16 +70,16 @@ function setNextPhoto() {
 function imageLoaded() {
     l = this.getBoundingClientRect().left;
     l = (Math.round(l)) + "px";
-    document.getElementById("prevDiv").style.left = l;
+    document.getElementById(prevButtonDiv).style.left = l;
 
     r = this.getBoundingClientRect().right;
     
-    nextDiv = document.getElementById("nextDiv");
+    nd = document.getElementById(nextButtonDiv);
     
-    l = r - nextDiv.getBoundingClientRect().width;
+    l = r - nd.getBoundingClientRect().width;
     l = Math.round(l) - 2;
     l = l + "px";
-    nextDiv.style.left = l;
+    nd.style.left = l;
 }
 
 function keyHandler(e) {
@@ -82,7 +95,7 @@ function keyHandler(e) {
 
 // Add all images into the page
 function addImages(name, targetDiv, count){
-    document.getElementById("pageHeader").innerHTML = name;
+    document.getElementById(pageHeaderId).innerHTML = name;
 
     var imgFolder =  './' + name + '/';
     // fill an array with 0..count-1
@@ -100,8 +113,8 @@ function addImages(name, targetDiv, count){
     for(var j = 0; j < indices.length; j++){
 
         // Create paths and store them
-        photoThumbPath = imgFolder + indices[j].toString() + '_thumb.jpg';
-        photoFullPath = imgFolder + indices[j].toString() + '.jpg';
+        photoThumbPath = imgFolder + indices[j].toString() + imageThumbFileNameSuffix;
+        photoFullPath = imgFolder + indices[j].toString() + imageFileExtension;
         photo = new Photo(photoThumbPath, photoFullPath)
         allPhotos.push(photo)
 
@@ -109,8 +122,8 @@ function addImages(name, targetDiv, count){
         var img = document.createElement("img");
         img.src = photoThumbPath;
         // NOTE! the id is parsed later for finding image index for navigation. Don't change without changing that
-        img.id = "img_" + j;
-        img.className = "imgThumb";
+        img.id = imageIdPrefix + j;
+        img.className = imageThumbClass;
                 
         img.onclick = imageClick;
        
@@ -122,7 +135,7 @@ function addImages(name, targetDiv, count){
 
     // setup handlers
     document.body.onkeydown = keyHandler;
-    document.getElementById("topImage").onload = imageLoaded;
-    document.getElementById("previous").onclick = setPrevPhoto;
-    document.getElementById("next").onclick = setNextPhoto;
+    document.getElementById(topImageId).onload = imageLoaded;
+    document.getElementById(prevDiv).onclick = setPrevPhoto;
+    document.getElementById(nextDiv).onclick = setNextPhoto;
 }
