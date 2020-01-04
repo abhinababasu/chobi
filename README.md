@@ -4,7 +4,6 @@ A static photo gallery generator
 
 ## TODO
 ### Template
-1. Make prev/next button correctly aligned
 1. Right size the top image
 1. Image transitions
 

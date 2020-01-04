@@ -12,7 +12,10 @@ body
 
  #mainDiv
  {
-     margin: 0 auto;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
  }
  
 #headDiv
@@ -29,17 +32,10 @@ body
     height: 800px;
 }
 
-#prevDiv
+#prevDiv, #nextDiv
 {
     position: absolute;
-    height: 100%;
-    vertical-align: middle;
-}
-
-#nextDiv
-{
-    position: absolute;
-    height: 100%;
+    top: 50%;
     vertical-align: middle;
 }
 
@@ -47,8 +43,28 @@ body
 {
     position: relative;
     padding: 10px;
+    bottom: 0;
 }
 
+#previous, #next {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+#previous {
+    left: 0;
+    margin-left: -15px;
+ }
+
+#next {
+    right: 0;
+    margin-right: -15px;  
+}
+  
 /* ===========================================================================
  * Images layouts
  */
