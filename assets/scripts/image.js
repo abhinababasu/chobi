@@ -81,8 +81,8 @@ function keyHandler(e) {
 }
 
 // Add all images into the page
-function addImages(targetDiv, count){
-    var imgFolder = './Gallery/';
+function addImages(name, targetDiv, count){
+    var imgFolder =  './' + name + '/';
     // fill an array with 0..count-1
     var indices = [];
     for (var i = 0; i < count; i++) {
