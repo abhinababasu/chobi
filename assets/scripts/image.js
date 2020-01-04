@@ -117,6 +117,10 @@ function addImages(name, targetDiv, count){
 
     maxImageCount = count;
     setCurrentImage();
+
+    // setup handlers
     document.body.onkeydown = keyHandler;
     document.getElementById("topImage").onload = imageLoaded;
+    document.getElementById("previous").onclick = setPrevPhoto;
+    document.getElementById("next").onclick = setNextPhoto;
 }

@@ -14,7 +14,6 @@
         // TODO: Change the image count to be the same as in the image folder
         count = 20
         addImages('Gallery', document.getElementById("bodyDiv"), count);
-        document.getElementById("titleId").innerHTML = document.title;
     };
     </script>
 </head>
@@ -30,8 +29,8 @@
         <div id="prevDiv"><img id="prevImg" src="prevlabel.gif" /></div>
         <div id="nextDiv"><img id="nextImg" src="nextlabel.gif" /></div> 
         <img id="topImage" />
-        <div id="previous"  onclick="setPrevPhoto()"></div>
-        <div id="next" onclick="setNextPhoto()"></div>
+        <div id="previous"></div>
+        <div id="next"></div>
     </div>
     <div id="bodyDiv">
     </div>
