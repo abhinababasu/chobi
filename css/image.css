@@ -46,6 +46,11 @@ body
     bottom: 0;
 }
 
+#footerDiv {
+    color: white;
+    font-size:10pt;
+}
+
 #previous, #next {
     position: absolute;
     width: 50%;
