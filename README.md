@@ -12,6 +12,9 @@ A static photo gallery generator
 1. Go code to copy everything over
 1. Go code to generate images and thumbnails in target folder
 1. Tumbnails for portrait should be not from the center (cmd line option)
+1. Proper cmd line parsing
+1. Make it work for mac as well
+
 
 #### Generating
 
