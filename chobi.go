@@ -4,20 +4,8 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"path/filepath"
 	"strconv"
 )
-
-func setAndUsePath(dir string) string {
-	exeDir, _ := os.Getwd()
-	path := filepath.Join(exeDir, "assets", dir)
-	if !CheckPathExists(path) {
-		fmt.Printf("Error!! %v does not exist", path)
-		os.Exit(3)
-	}
-
-	return path
-}
 
 func main() {
 	if len(os.Args) < 5 {
@@ -41,19 +29,29 @@ func main() {
 	err = SetupAssets("scripts", dstFolder)
 	if err != nil {
 		fmt.Println(err)
-		os.Exit(3)
+		os.Exit(2)
 	}
 	err = SetupAssets("css", dstFolder)
 	if err != nil {
 		fmt.Println(err)
-		os.Exit(3)
+		os.Exit(2)
 	}
 	err = SetupAssets("images", dstFolder)
 	if err != nil {
 		fmt.Println(err)
-		os.Exit(3)
+		os.Exit(2)
 	}
 
-	GenerateImagesIntoDir(name, srcFolder, dstFolder, uint(thumbSize))
+	imageCount, err := GenerateImagesIntoDir(name, srcFolder, dstFolder, uint(thumbSize))
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(3)
+	}
+	log.Printf("Process %v images", imageCount)
 
+	err = GeneratePage(name, imageCount, dstFolder)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(4)
+	}
 }

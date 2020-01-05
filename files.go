@@ -8,6 +8,14 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"strconv"
+	"strings"
+)
+
+const (
+	assetFolder      = "assets"
+	galleryNameToken = "GALLERY_NAME"
+	imageCountToken  = "IMG_COUNT"
 )
 
 func CreateDirIfNotExist(dir string) {
@@ -85,7 +93,7 @@ func CopyFile(src, dst string) error {
 func SetupAssets(name, destination string) error {
 	log.Printf("Setting up asset %v in %v", name, destination)
 	exeDir, _ := os.Getwd()
-	srcPath := filepath.Join(exeDir, "assets", name)
+	srcPath := filepath.Join(exeDir, assetFolder, name)
 	if !CheckPathExists(srcPath) {
 		return fmt.Errorf("Asset %v does not exist", srcPath)
 	}
@@ -94,4 +102,26 @@ func SetupAssets(name, destination string) error {
 	err := CopyDir(srcPath, dstPath)
 	return err
 
+}
+
+func GeneratePage(name string, imageCount int, destination string) error {
+	exeDir, _ := os.Getwd()
+	templateFilePath := filepath.Join(exeDir, assetFolder, "GALLERY_NAME.htm")
+	if !CheckPathExists(templateFilePath) {
+		return fmt.Errorf("Template %v does not exist", templateFilePath)
+	}
+
+	buffer, err := ioutil.ReadFile(templateFilePath)
+	srcStr := string(buffer)
+	if err != nil {
+		return err
+	}
+
+	finalStr := strings.ReplaceAll(srcStr, galleryNameToken, name)
+	finalStr = strings.ReplaceAll(finalStr, imageCountToken, strconv.Itoa(imageCount))
+	dstFile := filepath.Join(destination, name+".html")
+
+	ioutil.WriteFile(dstFile, []byte(finalStr), os.ModeExclusive)
+
+	return nil
 }

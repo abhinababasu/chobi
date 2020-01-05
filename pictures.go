@@ -60,7 +60,7 @@ func ResizeImage(srcPath, dstPath string, size uint) {
 	log.Printf("Generated %v", dstPath)
 }
 
-func GenerateImagesIntoDir(name, srcFolder, dstFolder string, thumbSize uint) {
+func GenerateImagesIntoDir(name, srcFolder, dstFolder string, thumbSize uint) (int, error) {
 
 	log.Printf("Enumerating folder %v\n", srcFolder)
 
@@ -70,8 +70,7 @@ func GenerateImagesIntoDir(name, srcFolder, dstFolder string, thumbSize uint) {
 
 	files, err := ioutil.ReadDir(srcFolder)
 	if err != nil {
-		fmt.Printf("Failed to enumerate folder %v", srcFolder)
-		os.Exit(2)
+		return 0, fmt.Errorf("Failed to enumerate folder %v", srcFolder)
 	}
 
 	dstFolder = filepath.Join(dstFolder, name)
@@ -102,4 +101,6 @@ func GenerateImagesIntoDir(name, srcFolder, dstFolder string, thumbSize uint) {
 		case <-completion:
 		}
 	}
+
+	return i, nil
 }
