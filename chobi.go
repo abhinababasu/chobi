@@ -2,30 +2,21 @@ package main
 
 import (
 	"fmt"
-	"io"
 	"log"
 	"os"
+	"path/filepath"
 	"strconv"
 )
 
-func CopyFile(src, dst string) error {
-	in, err := os.Open(src)
-	if err != nil {
-		return err
+func setAndUsePath(dir string) string {
+	exeDir, _ := os.Getwd()
+	path := filepath.Join(exeDir, "assets", dir)
+	if !CheckPathExists(path) {
+		fmt.Printf("Error!! %v does not exist", path)
+		os.Exit(3)
 	}
-	defer in.Close()
 
-	out, err := os.Create(dst)
-	if err != nil {
-		return err
-	}
-	defer out.Close()
-
-	_, err = io.Copy(out, in)
-	if err != nil {
-		return err
-	}
-	return out.Close()
+	return path
 }
 
 func main() {
@@ -43,10 +34,26 @@ func main() {
 	i++
 	thumbSize, err := strconv.Atoi(os.Args[i])
 	i++
-
 	if err != nil {
 		log.Panic("Failed to parse image thumb size - %v", err)
 	}
 
+	err = SetupAssets("scripts", dstFolder)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(3)
+	}
+	err = SetupAssets("css", dstFolder)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(3)
+	}
+	err = SetupAssets("images", dstFolder)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(3)
+	}
+
 	GenerateImagesIntoDir(name, srcFolder, dstFolder, uint(thumbSize))
+
 }
