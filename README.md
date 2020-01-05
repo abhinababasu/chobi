@@ -1,7 +1,6 @@
 # chobi 
 ## Introduction
-A static photo gallery generator
-
+A static photo gallery generator. chobi is lansliteration of "ছবি" which means picture in Bengali/Bangla.
 
 ## Build
 Get the sources and then build using
