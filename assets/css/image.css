@@ -62,12 +62,12 @@ body
 
 #previous {
     left: 0;
-    margin-left: -15px;
+    margin-left: 0px;
  }
 
 #next {
     right: 0;
-    margin-right: -15px;  
+    margin-right: 0px;  
 }
   
 /* ===========================================================================
