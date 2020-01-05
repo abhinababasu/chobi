@@ -18,6 +18,10 @@ const (
 	imageCountToken  = "IMG_COUNT"
 )
 
+// subfolders in assets that needs to be copied to target
+var assets = []string{"scripts", "css", "images"}
+
+// CreateDirIfNotExist creates all dirs in the path if does not exist
 func CreateDirIfNotExist(dir string) {
 	if _, err := os.Stat(dir); os.IsNotExist(err) {
 		err = os.MkdirAll(dir, 0755)
@@ -27,6 +31,7 @@ func CreateDirIfNotExist(dir string) {
 	}
 }
 
+// CheckPathExists checks if a file path exists on the filesystem
 func CheckPathExists(path string) bool {
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 		return false
@@ -35,6 +40,7 @@ func CheckPathExists(path string) bool {
 	return true
 }
 
+// CopyDir copies a directory from source to destination recursively
 func CopyDir(src string, dst string) error {
 	var err error
 	var fds []os.FileInfo
@@ -68,8 +74,7 @@ func CopyDir(src string, dst string) error {
 	return nil
 }
 
-// File copies a single file from src to dst
-
+// CopyFile copies a single file from src to dst
 func CopyFile(src, dst string) error {
 	in, err := os.Open(src)
 	if err != nil {
@@ -90,8 +95,9 @@ func CopyFile(src, dst string) error {
 	return out.Close()
 }
 
+// SetupAssets copies a named asset to the destination
 func SetupAssets(name, destination string) error {
-	log.Printf("Setting up asset %v in %v", name, destination)
+	log.Printf("Setting up asset '%v' in %v", name, destination)
 	exeDir, _ := os.Getwd()
 	srcPath := filepath.Join(exeDir, assetFolder, name)
 	if !CheckPathExists(srcPath) {
@@ -104,6 +110,19 @@ func SetupAssets(name, destination string) error {
 
 }
 
+// SetupAllAssets copies all assets to the destination
+func SetupAllAssets(destination string) error {
+	for _, asset := range assets {
+		err := SetupAssets(asset, destination)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+// GeneratePage generates the main html page into the destination
 func GeneratePage(name string, imageCount int, destination string) error {
 	exeDir, _ := os.Getwd()
 	templateFilePath := filepath.Join(exeDir, assetFolder, "GALLERY_NAME.htm")

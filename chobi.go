@@ -26,17 +26,7 @@ func main() {
 		log.Panic("Failed to parse image thumb size - %v", err)
 	}
 
-	err = SetupAssets("scripts", dstFolder)
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(2)
-	}
-	err = SetupAssets("css", dstFolder)
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(2)
-	}
-	err = SetupAssets("images", dstFolder)
+	err = SetupAllAssets(dstFolder)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(2)
