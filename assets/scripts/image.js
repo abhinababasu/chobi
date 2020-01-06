@@ -5,8 +5,6 @@ var currentIndex = 0;   // index into allPhotos that is being displayed
 // html elements manipulated by this script
 const imageIdPrefix = 'img_';
 const topImageId = 'topImage';
-const prevButtonDiv = 'prevDiv';
-const nextButtonDiv = 'nextDiv';
 const prevDiv = 'previous';
 const nextDiv = 'next';
 const imgThumbClass = 'imgThumb';
@@ -23,7 +21,7 @@ class Photo {
     }
 }
 
-// helped to shuffle an array randomly
+// shuffle an array randomly
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
     // While there remain elements to shuffle...
@@ -65,21 +63,6 @@ function setNextPhoto() {
     currentIndex = (currentIndex+1) % maxImageCount
 
     setCurrentImage()
-}
-
-function imageLoaded() {
-    l = this.getBoundingClientRect().left;
-    l = (Math.round(l)) + "px";
-    document.getElementById(prevButtonDiv).style.left = l;
-
-    r = this.getBoundingClientRect().right;
-    
-    nd = document.getElementById(nextButtonDiv);
-    
-    l = r - nd.getBoundingClientRect().width;
-    l = Math.round(l) - 2;
-    l = l + "px";
-    nd.style.left = l;
 }
 
 function keyHandler(e) {
@@ -135,7 +118,6 @@ function addImages(name, targetDiv, count){
 
     // setup handlers
     document.body.onkeydown = keyHandler;
-    document.getElementById(topImageId).onload = imageLoaded;
     document.getElementById(prevDiv).onclick = setPrevPhoto;
     document.getElementById(nextDiv).onclick = setNextPhoto;
 }

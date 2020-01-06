@@ -21,7 +21,7 @@ chobi Landscape D:\SourceImages d:\Upload 150
 
 ## TODO
 Template
-1. Fix moving location of prev next button
+1. Move navigation button close to image
 1. Right size the top image
 1. Image transitions
 
