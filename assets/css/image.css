@@ -21,8 +21,10 @@ body
 #headDiv
 {
     color: #FFFFFF; 
-    padding: 20px;
-
+    padding: 10px;
+    height: 50px;
+    overflow: hidden;
+    vertical-align: center;
 }
 
 #topimageDiv 
@@ -32,7 +34,7 @@ body
     height: 800px;
 }
 
-#bodyDiv
+#thumbnailDiv
 {
     position: relative;
     padding: 10px;
@@ -89,10 +91,10 @@ img
  * Misc layouts
  */
 
-#pageHeader
+#pageTitle
 {
     font-family:Arial Black, Arial;
-    font-size:30pt;
+    font-size:20pt;
     display: inline;
 
     align-items: center;

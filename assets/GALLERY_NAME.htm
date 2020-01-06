@@ -15,32 +15,32 @@
         // IMG_COUNT and GALLERY_NAME will be replaced. 
         // For manual testing of template, uncomment the following line
         // IMG_COUNT = 20;
-        addImages('GALLERY_NAME', document.getElementById("bodyDiv"), IMG_COUNT);
+        addImages('GALLERY_NAME', document.getElementById("thumbnailDiv"), IMG_COUNT);
     };
     </script>
 </head>
 
 <body>
-<div id="mainDiv">
-    <div id="headDiv">
-        <a href="./index.html"><img id="backImg" src="images/back.png" alt="back" /></a>
-        <h1 id="pageHeader">will be replaced</h1>
-    </div>
+    <div id="mainDiv">
+        <div id="headDiv">
+            <a href="./index.html"><img id="backImg" src="images/back.png" alt="back" /></a>
+            <h1 id="pageTitle">GALLERY_NAME</h1>
+        </div>
 
-    <div id="topimageDiv">
-            <img id="topImage" />
-            <button class="button-left">&#10094;</button>
-            <button class="button-right">&#10095;</button>
-        <div id="previous"></div>
-        <div id="next"></div>
-    </div>
-    <div id="bodyDiv">
-    </div>
+        <div id="topimageDiv">
+                <img id="topImage" />
+                <button class="button-left">&#10094;</button>
+                <button class="button-right">&#10095;</button>
+            <div id="previous"></div>
+            <div id="next"></div>
+        </div>
+        <div id="thumbnailDiv">
+        </div>
 
-    <div id="footerDiv">
-        (c) Abhinaba Basu. All rights reserved
+        <div id="footerDiv">
+            (c) Abhinaba Basu. All rights reserved
+        </div>
     </div>
-</div>
     
     <!-- Google Analytic -->
     <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

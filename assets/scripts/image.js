@@ -10,7 +10,6 @@ const nextDiv = 'next';
 const imgThumbClass = 'imgThumb';
 const imageThumbFileNameSuffix = '_thumb.jpg';
 const imageFileExtension = '.jpg';
-const pageHeaderId = 'pageHeader';
 const imageThumbClass = 'imgThumb';
 
 // Photo class with path of thumbnail and full resolution
@@ -78,8 +77,6 @@ function keyHandler(e) {
 
 // Add all images into the page
 function addImages(name, targetDiv, count){
-    document.getElementById(pageHeaderId).innerHTML = name;
-
     var imgFolder =  './' + name + '/';
     // fill an array with 0..count-1
     var indices = [];
