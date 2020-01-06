@@ -1,6 +1,8 @@
 var maxImageCount;      // maximum number of images on this page
 var allPhotos = [];     // array of all the photos
 var currentIndex = 0;   // index into allPhotos that is being displayed
+var transitionTimer;
+const tansitionInterval = 5000;
 
 // html elements manipulated by this script
 const imageIdPrefix = 'img_';
@@ -47,6 +49,11 @@ function imageClick() {
 function setCurrentImage() {
     targetImg = document.getElementById(topImageId), 
     targetImg.src = allPhotos[currentIndex].fullPath;
+    
+    // reset counting down for next change. This ensures a periodic tick doesn't change a 
+    // photo immediately after user selects a new one directly
+    clearInterval(transitionTimer);
+    transitionTimer = setTimeout(setNextPhoto, tansitionInterval);
 }
 
 function setPrevPhoto() {
@@ -123,6 +130,8 @@ function addImages(name, targetDiv, count){
     
     document.getElementById("thumbnailScrollLeft").onmouseover = scrollLeft;
     document.getElementById("thumbnailScrollLeft").onmouseout = scrollStop;
+
+    transitionTimer = setTimeout(setNextPhoto, tansitionInterval);
 }
 
 var scrolling = false;

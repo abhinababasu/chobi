@@ -23,10 +23,10 @@ chobi Landscape D:\SourceImages d:\Upload 150
 Template
 1. Move navigation button close to image
 1. Right size the top image
+1. Show a count down animation before changing to next pic automatically
 1. Image transitions
 
 Generation
 1. Tumbnails for portrait should be not from the center (cmd line option)
 1. Proper cmd line parsing
 1. Make it work for mac as well
-
