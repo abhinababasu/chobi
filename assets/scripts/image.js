@@ -127,19 +127,33 @@ function addImages(name, targetDiv, count){
 
     document.getElementById("thumbnailScrollRight").onmouseover = scrollRight;
     document.getElementById("thumbnailScrollRight").onmouseout = scrollStop;
+    document.getElementById("thumbnailScrollRight").onclick = scrollStepRight;
     
     document.getElementById("thumbnailScrollLeft").onmouseover = scrollLeft;
     document.getElementById("thumbnailScrollLeft").onmouseout = scrollStop;
+    document.getElementById("thumbnailScrollLeft").onclick = scrollStepLeft;
 
     transitionTimer = setTimeout(setNextPhoto, tansitionInterval);
 }
 
 var scrolling = false;
-var step = 25;
 
 function scrollRight() {
     scrolling = true;
     scrollContent("right");
+}
+
+function scrollStepLeft() {
+    $("#thumbnailDiv").animate({
+        scrollLeft: "-=650px"
+    }, 1, function(){});
+}
+
+
+function scrollStepRight() {
+    $("#thumbnailDiv").animate({
+        scrollLeft: "+=650px"
+    }, 1, function(){});
 }
 
 function scrollLeft() {
