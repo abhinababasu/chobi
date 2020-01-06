@@ -140,7 +140,7 @@ func GeneratePage(name string, imageCount int, destination string) error {
 	finalStr = strings.ReplaceAll(finalStr, imageCountToken, strconv.Itoa(imageCount))
 	dstFile := filepath.Join(destination, name+".html")
 
-	ioutil.WriteFile(dstFile, []byte(finalStr), os.ModeExclusive)
+	ioutil.WriteFile(dstFile, []byte(finalStr), 0644)
 
 	return nil
 }
