@@ -19,6 +19,10 @@ Example
 chobi Landscape D:\SourceImages d:\Upload 150
 ```
 
+## Sample
+A sample gallery
+[Photography](http://bonggeek.com/Photography/)
+
 ## TODO
 Template
 1. Main image should better expand to fill screen
