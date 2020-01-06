@@ -21,8 +21,8 @@ chobi Landscape D:\SourceImages d:\Upload 150
 
 ## TODO
 Template
-1. Move navigation button close to image
-1. Right size the top image
+1. Main image should better expand to fill screen
+1. Main image should be centered vertically
 1. Show a count down animation before changing to next pic automatically
 1. Image transitions
 
