@@ -16,10 +16,13 @@ func main() {
 	i := 1
 	name := os.Args[i]
 	i++
+
 	srcFolder := os.Args[i]
 	i++
+
 	dstFolder := os.Args[i]
 	i++
+
 	thumbSize, err := strconv.Atoi(os.Args[i])
 	i++
 	if err != nil {
