@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/image.css" /> 
 
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="scripts/image.js"></script>
     <script type="text/javascript">
     window.onload = function() {
@@ -17,6 +17,7 @@
         // IMG_COUNT = 20;
         addImages('GALLERY_NAME', document.getElementById("thumbnailDiv"), IMG_COUNT);
     };
+
     </script>
 </head>
 
@@ -34,7 +35,10 @@
             <div id="previous"></div>
             <div id="next"></div>
         </div>
-        <div id="thumbnailDiv">
+        <div id="thumbnailContainer">
+            <div id="thumbnailScrollLeft">&#10094;</div>
+            <div id="thumbnailDiv"></div>
+            <div id="thumbnailScrollRight">&#10095;</div>
         </div>
 
         <div id="footerDiv">

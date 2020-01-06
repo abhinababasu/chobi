@@ -117,4 +117,40 @@ function addImages(name, targetDiv, count){
     document.body.onkeydown = keyHandler;
     document.getElementById(prevDiv).onclick = setPrevPhoto;
     document.getElementById(nextDiv).onclick = setNextPhoto;
+
+    document.getElementById("thumbnailScrollRight").onmouseover = scrollRight;
+    document.getElementById("thumbnailScrollRight").onmouseout = scrollStop;
+    
+    document.getElementById("thumbnailScrollLeft").onmouseover = scrollLeft;
+    document.getElementById("thumbnailScrollLeft").onmouseout = scrollStop;
+}
+
+var scrolling = false;
+var step = 25;
+
+function scrollRight() {
+    scrolling = true;
+    scrollContent("right");
+}
+
+function scrollLeft() {
+    scrolling = true;
+    scrollContent("left");
+}
+
+function scrollStop() {
+    scrolling = false;
+}
+
+
+function scrollContent(direction) {
+    var amount = (direction === "left" ? "-=5px" : "+=5px");
+    $("#thumbnailDiv").animate({
+        scrollLeft: amount
+    }, 1, function() {
+        if (scrolling) {
+            // If we want to keep scrolling, call the scrollContent function again:
+            scrollContent(direction);
+        }
+    });
 }

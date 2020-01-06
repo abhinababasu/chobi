@@ -34,11 +34,22 @@ body
     height: 800px;
 }
 
+#thumbnailContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 #thumbnailDiv
 {
     position: relative;
     padding: 10px;
     bottom: 0;
+    height: autog;
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: visible;
+    vertical-align:middle;
 }
 
 #footerDiv {
@@ -156,4 +167,20 @@ img
 
 .button-left {
     left: 0%;
+}
+
+#thumbnailScrollLeft, #thumbnailScrollRight {
+    color: white;
+    width: 50px;
+    height: 150px;
+    line-height: 150px;
+    font-size: 30pt;
+    cursor:pointer;
+}
+#thumbnailScrollLeft {
+    text-align: left;
+}
+
+#thumbnailScrollRight {
+    text-align: right;
 }
