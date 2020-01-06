@@ -25,16 +25,3 @@ A sample gallery
 
 ![Sample Gallery](https://github.com/abhinababasu/chobi/raw/master/sample.JPG "Logo Title Text 1")
 
-
-## TODO
-Template
-1. Main image should better expand to fill screen
-1. Main image should be centered vertically
-1. Show a count down animation before changing to next pic automatically
-1. Image transitions
-1. Subdirectory handling
-
-Generation
-1. Tumbnails for portrait should be not from the center (cmd line option)
-1. Proper cmd line parsing
-1. Make it work for mac as well
