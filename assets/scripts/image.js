@@ -49,6 +49,9 @@ function imageClick() {
 function setCurrentImage() {
     targetImg = document.getElementById(topImageId), 
     targetImg.src = allPhotos[currentIndex].fullPath;
+
+    // dynamically create and set image
+    // http://jsfiddle.net/Mottie/RNVaZ/
     
     // reset counting down for next change. This ensures a periodic tick doesn't change a 
     // photo immediately after user selects a new one directly

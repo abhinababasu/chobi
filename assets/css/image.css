@@ -32,15 +32,25 @@ body
 
 #topimageDiv 
 {
-    position: relative;
     white-space: nowrap;
-    height: 800px;
+    position: fixed;
+    width: 100%;
+
+    top: 80px;
+    right: 0;
+    bottom: 200px;
+    left: 0;
+
 }
 
 #thumbnailContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    height: 200px;
 }
 
 #thumbnailDiv
@@ -48,16 +58,12 @@ body
     position: relative;
     padding: 10px;
     bottom: 0;
-    height: autog;
+    height: auto;
     white-space: nowrap;
     overflow-x: hidden;
     overflow-y: visible;
     vertical-align:middle;
-}
-
-#footerDiv {
-    color: white;
-    font-size:10pt;
+    width: 90%;
 }
 
 #previous, #next {
@@ -92,7 +98,6 @@ img
 {
     display: block;
     margin: 0 auto;
-    
     max-height: 100%;
     max-width: 100%;
 }
@@ -114,13 +119,6 @@ img
 
     align-items: center;
     justify-content: left;
-}
-
-#footerFrame
-{
-    height: 50px;
-    width: 800px;
-    border: 0px;
 }
 
 .imgThumb {
