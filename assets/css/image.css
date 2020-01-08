@@ -40,7 +40,15 @@ body
     right: 0;
     bottom: 200px;
     left: 0;
+}
 
+#loadingDiv
+{
+    position: fixed;
+    top:50%;
+    left:50%;
+    color: white;
+    font-size: 20pt;
 }
 
 #thumbnailContainer {
@@ -98,6 +106,7 @@ img
 {
     display: block;
     margin: 0 auto;
+
     max-height: 100%;
     max-width: 100%;
 }

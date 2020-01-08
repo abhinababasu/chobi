@@ -46,13 +46,16 @@ function imageClick() {
     setCurrentImage()
 }
 
+function imageonLoad() {
+    document.getElementById("loadingDiv").style.display = "none";
+}
+
 function setCurrentImage() {
-    targetImg = document.getElementById(topImageId), 
+    document.getElementById("loadingDiv").style.display = "block";
+    targetImg = document.getElementById(topImageId);
+    targetImg.onload = imageonLoad;
     targetImg.src = allPhotos[currentIndex].fullPath;
 
-    // dynamically create and set image
-    // http://jsfiddle.net/Mottie/RNVaZ/
-    
     // reset counting down for next change. This ensures a periodic tick doesn't change a 
     // photo immediately after user selects a new one directly
     clearInterval(transitionTimer);
@@ -135,8 +138,6 @@ function addImages(name, targetDiv, count){
     document.getElementById("thumbnailScrollLeft").onmouseover = scrollLeft;
     document.getElementById("thumbnailScrollLeft").onmouseout = scrollStop;
     document.getElementById("thumbnailScrollLeft").onclick = scrollStepLeft;
-
-    transitionTimer = setTimeout(setNextPhoto, tansitionInterval);
 }
 
 var scrolling = false;
