@@ -1,48 +1,39 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"os"
-	"strconv"
 )
 
 func main() {
-	if len(os.Args) < 5 {
-		fmt.Println("Usage: chobi <name> <image folder full path> <out path> <thumb-size>")
+	name := flag.String("name", "", "Name of the album")
+	srcFolder := flag.String("src", "", "Source directory with images")
+	dstFolder := flag.String("dst", "", "Destination directory where the album will generated")
+	thumbSize := flag.Uint("size", 150, "Size of thumbnails")
+
+	flag.Parse()
+
+	if *name == "" || *srcFolder == "" || *dstFolder == "" {
+		flag.PrintDefaults()
 		os.Exit(1)
 	}
 
-	i := 1
-	name := os.Args[i]
-	i++
-
-	srcFolder := os.Args[i]
-	i++
-
-	dstFolder := os.Args[i]
-	i++
-
-	thumbSize, err := strconv.Atoi(os.Args[i])
-	i++
-	if err != nil {
-		log.Panic("Failed to parse image thumb size - %v", err)
-	}
-
-	err = SetupAllAssets(dstFolder)
+	err := SetupAllAssets(*dstFolder)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(2)
 	}
 
-	imageCount, err := GenerateImagesIntoDir(name, srcFolder, dstFolder, uint(thumbSize))
+	imageCount, err := GenerateImagesIntoDir(*name, *srcFolder, *dstFolder, uint(*thumbSize))
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(3)
 	}
 	log.Printf("Process %v images", imageCount)
 
-	err = GeneratePage(name, imageCount, dstFolder)
+	err = GeneratePage(*name, imageCount, *dstFolder)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(4)

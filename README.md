@@ -9,14 +9,14 @@ go build .
 ```
 
 ## Run
-The usage is
+Check usage using
 ```
-chobi <name> <image folder full path> <out path> <thumb-size>
+chobi -h
 ```
 
 Example
 ```
-chobi Landscape D:\SourceImages d:\Upload 150
+chobi -name People -src C:\Code\GitHub\chobi\test -dst c:\temp
 ```
 
 ## Sample
