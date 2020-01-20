@@ -109,6 +109,28 @@ img
 
     max-height: 100%;
     max-width: 100%;
+
+    border:none;
+    display:inline-block;
+    padding:8px 16px;
+    vertical-align:middle;
+    overflow:hidden;
+    white-space:nowrap;
+
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    transform: translate(-50%,-50%);
+
+    -ms-transform: translate(-50%,-50%);
 }
 
 #backImg
