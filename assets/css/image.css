@@ -105,14 +105,12 @@ img
 #topImage
 {
     display: block;
-    margin: 0 auto;
 
     max-height: 100%;
     max-width: 100%;
 
     border:none;
     display:inline-block;
-    padding:8px 16px;
     vertical-align:middle;
     overflow:hidden;
     white-space:nowrap;
@@ -180,8 +178,7 @@ img
     user-select:none;
 
     color: #fff;
-    background-color: #000;
-    opacity: 0.5;
+    background-color: rgba(0, 0, 0, .2);;
     font-size: 30pt;
 
     -webkit-appearance: button;
