@@ -71,7 +71,7 @@ body
     overflow-x: hidden;
     overflow-y: visible;
     vertical-align:middle;
-    width: 90%;
+    width: 100%;
 }
 
 #previous, #next {
@@ -183,16 +183,20 @@ img
 
 #thumbnailScrollLeft, #thumbnailScrollRight {
     color: white;
-    width: 50px;
+    width: 90px;
     height: 150px;
     line-height: 150px;
     font-size: 30pt;
     cursor:pointer;
-}
-#thumbnailScrollLeft {
-    text-align: left;
+    text-align: center;
 }
 
+
+#thumbnailScrollLeft {
+    left: 0%;
+}
+
+
 #thumbnailScrollRight {
-    text-align: right;
+    right: 0%;
 }
