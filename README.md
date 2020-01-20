@@ -17,6 +17,8 @@ While this tool works as good or as bad as many other photo gallery generator, i
 However, the generated thumbnails would simply be either from the center or some other arbitrary location. This meant that 
 the thumbnails would cut off at weird places. 
 
+Chobi uses face-detection to ensure that does not happen and the face is always fully present in the generated thumbnail.
+
 Consider the following images and the thumbnails generated without face detection and then with facedetection
 
 
