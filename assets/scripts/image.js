@@ -43,23 +43,25 @@ function shuffle(array) {
 function imageClick() {
     index = Number(this.id.replace(imageIdPrefix,""));
     currentIndex = index
-    setCurrentImage()
+    setCurrentImage(true)
 }
 
 function imageonLoad() {
     document.getElementById("loadingDiv").style.display = "none";
 }
 
-function setCurrentImage() {
-    document.getElementById("loadingDiv").style.display = "block";
+function setCurrentImage(showLoading) {
     targetImg = document.getElementById(topImageId);
-    targetImg.onload = imageonLoad;
+    if (showLoading) {
+        document.getElementById("loadingDiv").style.display = "block";
+        targetImg.onload = imageonLoad;
+    }
     targetImg.src = allPhotos[currentIndex].fullPath;
 
     // reset counting down for next change. This ensures a periodic tick doesn't change a 
     // photo immediately after user selects a new one directly
     clearInterval(transitionTimer);
-    transitionTimer = setTimeout(setNextPhoto, tansitionInterval);
+    transitionTimer = setTimeout(setPhotoOnTimer, tansitionInterval);
 }
 
 function setPrevPhoto() {
@@ -68,13 +70,17 @@ function setPrevPhoto() {
         currentIndex = maxImageCount - 1
     }
     
-    setCurrentImage()
+    setCurrentImage(true)
 }
+function setPhotoOnTimer() {
+    currentIndex = (currentIndex+1) % maxImageCount
 
+    setCurrentImage(false)
+}
 function setNextPhoto() {
     currentIndex = (currentIndex+1) % maxImageCount
 
-    setCurrentImage()
+    setCurrentImage(true)
 }
 
 function keyHandler(e) {
@@ -124,7 +130,7 @@ function addImages(name, targetDiv, count){
     }
 
     maxImageCount = count;
-    setCurrentImage();
+    setCurrentImage(true);
 
     // setup handlers
     document.body.onkeydown = keyHandler;
