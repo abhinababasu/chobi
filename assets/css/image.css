@@ -114,6 +114,7 @@ img
     vertical-align:middle;
     overflow:hidden;
     white-space:nowrap;
+    border-radius: 18px;
 
     -webkit-touch-callout:none;
     -webkit-user-select:none;
@@ -157,7 +158,18 @@ img
     width: 150px;
     height: 150px;
     overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+
+    transition: .5s ease;
 }
+
+
+.imgThumb:hover{
+    box-shadow: 0 0 0 5px #ffffff;
+    transition: .5s ease;
+}
+
 
 .button-right, .button-left{
     border:none;
